@@ -25,24 +25,20 @@
   - 변수 자동 형식 지정
   - 변경 가능한 변수 선언
 
-<code>
-void main() {
-  **var** name = 'kazu'; //자동 형식 지정
+<code>void main() {
+  var name = 'kazu'; //자동 형식 지정
   name = 'kazu'; //변경 가능
-}
-</code>
+}</code>
 
 ### 1.2 Dynamic Type
 - 정말 필요할 때만 사용할 것
 > 데이터 타입 정하는 예시
 
-<code>
-**if (name is String)** {
+<code>if (name is String) {
     //name이 String인 것을 알기 때문에 string과 관련된 많은 함수 사용 가능
     name.isEmpty;
     name.toLowerCase();
-  }
-</code>
+  }</code>
 
 ### 1.3 Nullable Variables
 - 개발자가 null 값-런타임 에러를 참조할 수 있도록 해줌.
