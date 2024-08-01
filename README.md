@@ -20,32 +20,31 @@
 
 ## 1. Variables
 
-##### 1.1 var keyword
+### 1.1 var keyword
 - var
   - 변수 자동 형식 지정
   - 변경 가능한 변수 선언
-<code>
-  void main() {
+<p>void main() {
   var name = 'kazu'; //자동 형식 지정
   name = 'kazu'; //변경 가능
-}</code>
+}</p>
 
-##### 1.2 Dynamic Type
+### 1.2 Dynamic Type
 - 정말 필요할 때만 사용할 것
 > 데이터 타입 정하는 예시
-<code>
-if (name is String) {
+<p>if (name is String) {
     //name이 String인 것을 알기 때문에 string과 관련된 많은 함수 사용 가능
     name.isEmpty;
     name.toLowerCase();
-  }
-> </code>
+  }</p>
 
-##### 1.3 Nullable Variables
+### 1.3 Nullable Variables
 - 개발자가 null 값-런타임 에러를 참조할 수 있도록 해줌.
 
-> null 처리하는 방법 2가지
-> 방법
+> null 처리하는 방법1
+<p>void main(){
+    
+}</p>
 
 
 ## 2. Data Types
