@@ -25,7 +25,8 @@
   - 변수 자동 형식 지정
   - 변경 가능한 변수 선언
 
-```void main() {
+```
+void main() {
   var name = 'kazu'; //자동 형식 지정
   name = 'kazu'; //변경 가능
 }
@@ -35,7 +36,8 @@
 - 정말 필요할 때만 사용할 것
 > 데이터 타입 정하는 예시
 
-```if (name is String) {
+```
+if (name is String) {
     //name이 String인 것을 알기 때문에 string과 관련된 많은 함수 사용 가능
     name.isEmpty;
     name.toLowerCase();
@@ -47,7 +49,8 @@
 
 > null 처리 방법1
 
-```void main(){
+```
+void main(){
     String? str = 'kazu';    //(데이터 타입)? : 데이터 타입일수도 null일수도 있음을 dart가 알아볼 수 있도록 함.
     str = null;
 
@@ -60,7 +63,8 @@
 
 > null 처리 방법 2
 
-```void main(){
+```
+void main(){
     String? str = 'kazu';    //(데이터 타입)? : 데이터 타입일수도 null일수도 있음을 dart가 알아볼 수 있도록 함.
     str = null;
     str?.isNotEmpty;         //변수?.isNotEmpty : 변수가 null이 아니면 str.isNotEmpty
