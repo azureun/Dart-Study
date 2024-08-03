@@ -155,7 +155,6 @@ void main() {
   }
   ```
 
-
 > collection if
 ```dart echo
   var giveMeFive = true;
@@ -179,20 +178,40 @@ print(newFriends);  //결과 : [lewis, ralph, darren, ❤️kazu, ❤️vinsen]
 ```
 
 ### 2.3 Maps
-- Key, Value 구조
-- Key는 중복 허용하지 않고, Value는 중복을 허용함.
+- Key, Value 형태
+  - Key는 중복 허용하지 않고, Value는 중복을 허용함.
+  - python의 dictionary와 비슷함.
+- Value는 어떤 자료형이든 될 수 있음.
+
+> Maps 형태
+```dart echo
+void main() {
+  //컴파일러가 key, value 자료형 유추함.
+  var player = {
+    'name': 'kazu', //key, value(anything)
+    'xp': 19.99,
+    'superpower': false,
+  };
+  print(player);
+}
+```
 
 ### 2.4 Sets
 - 순서가 없고, 데이터 중복 허용하지 않음.
 - Set은 {}(중괄호)를 사용한다.
 
 > Set 형태
-  ```dart echo
-  void main() {
+```dart echo
+void main() {
   var numbers = {1, 2, 3, 4};
-  Set<int> numbers2 = {1, 2, 3, 4};    //같은 표현
-  }
-  ```
+  Set<int> numbers2 = {1, 2, 3, 4};
+
+  numbers.add(1);
+  numbers.add(1);
+  numbers.add(1);   //Set은 같은 요소들 추가해도 고유한 요소 1개만 나타냄.
+  print(numbers);   //결과 : {1, 2, 3, 4}
+}
+```
 
 
 ## 3. Funtions
