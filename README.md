@@ -146,6 +146,7 @@ void main() {
 - List는 [](대괄호)를 사용한다.
 - List 기능 2가지
   - collection if, collection for
+- Python List과 같음
 
 > List 형태
   ```dart echo
@@ -180,7 +181,7 @@ print(newFriends);  //결과 : [lewis, ralph, darren, ❤️kazu, ❤️vinsen]
 ### 2.3 Maps
 - Key, Value 형태
   - Key는 중복 허용하지 않고, Value는 중복을 허용함.
-  - python의 dictionary와 비슷함.
+  - Python의 Dictionary와 같음.
 - Value는 어떤 자료형이든 될 수 있음.
 
 > Maps 형태
@@ -199,6 +200,7 @@ void main() {
 ### 2.4 Sets
 - 순서가 없고, 데이터 중복 허용하지 않음.
 - Set은 {}(중괄호)를 사용한다.
+- Python Set과 같음.
 
 > Set 형태
 ```dart echo
