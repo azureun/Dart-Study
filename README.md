@@ -214,8 +214,135 @@ void main() {
   print(numbers);   //결과 : {1, 2, 3, 4}
 }
 ```
-
+---
 
 ## 3. Funtions
 
+### 3.0 Defining a Function
+> 반환 값 없는 함수
+```dart echo
+void sayHello(String name) {
+  print("Hello $name nice to meet you!");
+}
+```
+
+> 반환 값 있는 함수
+```dart echo
+String sayHello2(String name) {
+  return "Hello $name nice to meet you!";
+}
+```
+
+> => (fat arrow syntax) : 바로 값 리턴. 함수가 한 줄일 때 사용.
+```dart echo
+num plus(num a, num b) => a + b;
+```
+
+### 3.1 Name Parameters
+> 일반적인 Parameters 가진 Function
+```dart echo
+String Hello1(
+  String name,
+  String country,
+  int age,
+) {
+  return "Hello $name, you are $age, and you come from $country";
+}
+```
+
+> Parameter에 default value 지정한 Fuction
+- {} 중괄호 안에 써주기
+```dart echo
+String Hello2({
+  String name = 'anon',
+  String country = 'uk',
+  int age = 99,
+}) {
+  return "Hello $name, you are $age, and you come from $country";
+}
+```
+
+> required modifier
+- 사용자에게 입력 받아서 넣을 경우 사용.
+- 로그인 같은 경우, default value를 지정할 수 없으므로 required modifier 사용.
+```dart echo
+String Hello3({
+  required String name,
+  required String country,
+  required int age,
+}) {
+  return "Hello $name, you are $age, and you come from $country";
+}
+//main 함수a
+void main() {
+  Hello1('kazu', 'korea', 12);
+  Hello2(country: 'us', age: 14, name: 'dart');
+  Hello2();
+  Hello3(country: 'korea', name: 'kazu', age: 12);
+}
+```
+### 3.2 Optional Positional Parmeters
+- Parameter 중 원하는 Parameter에만 default value 지정
+- 형태 : [dataType? variable = 'default value']
+> country만 Not required
+```dart echo
+String Hello2(
+  String name,
+  int age, [
+  String? country = 'korea',         //country는 값이 있을 수도 없을 수도 있음.
+]) =>
+    "Hello $name, you are $age years old from $country";
+```
+
+### 3.3 QQ Operator(null aware operator)
+
+> [1] ??(QQ operator)
+- left ?? right
+left가 null 이면 right return
+left가 null 아니면 left return
+
+```dart echo
+//방법1 - 기본 형태
+String capitalizeName1(String? name) {
+  //String? : name은 null일수도 아닐수도
+  if (name != null) return name.toUpperCase();
+  return 'ANON';
+}
+
+//방법2 - ?(null-check operator)
+String capitalizeName2(String? name) =>
+    name != null ? name.toUpperCase() : 'ANON';
+//name이 null이 아니면 name을 대문자로, null이면 name을 ANON로
+
+//방법3 - ??(QQ operator) 사용. 가장 짧게 표현.
+String capitalizeName3(String? name) => name?.toUpperCase() ?? 'ANON';
+```
+
+> [2] ?=(QQ equals)
+```dart echo
+  String? name;
+  name ??= 'azureun';   //name이 null이면 azureun 할당
+  //name ??= 'another'; //이 코드부턴 null 될 일 없으므로 에러
+  //name = null;        //이 코드 이후부터 ??= 다시 사용 가능.
+```
+
+### 3.4 Typedef
+- 자료형에 alias(타입 별칭)를 붙일 수 있게 해줌.
+```dart echo
+typedef ListOfInts = List<int>;    //ListOfInts는 List<int> 대신 사용 가능.
+```
+
+> Map의 typedef
+```dart echo
+typedef UserInfo = Map<String, String>;
+
+String sayHi(Map<String, String> userInfo){
+    return "Hi ${userInfo['kazu']}";
+}
+void main(){
+    print(sayHi({"name" : "azureun"}));
+}
+```
+
+---
 ## 4. Classes
