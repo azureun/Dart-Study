@@ -38,7 +38,7 @@ void main() {
 
 // 클래스의 새 인스턴스를 생성, 초기화
 
-
+/*
 class Player {
   final String name;
   late int xp; //late : 변수 선언은 했지만 값은 나중에 받아옴.
@@ -62,6 +62,7 @@ void main() {
   var player2 = Player("cocoa", 2500);
   player2.sayHello();
 }
+*/
 
 //====================
 
@@ -115,7 +116,7 @@ void main() {
 // Named Constructor : 클래스는 여러 생성자를 가질 수 있고, 각 생성자에 의미 있는 이름 부여 가능.
 // 동일한 클래스에 대해 여러 방식으로 객체 초기화
 // 생성자의 목적 명확히 표현
-// 형태 : ClassName.counstrucotrName()
+// 형태 : ClassName.construcotrName()
 
 // named vs positional
 // name - 기본적으로 required 속성 없음. 명시적임.
@@ -175,7 +176,7 @@ void main() {
 
 //====================
 
-//4.4 Recap - fromJason named constructor
+//4.4 Recap - fromJson named constructor
 
 //JSON 데이터로부터 객체 생성하는 데 사용되는 특별한 생성자.
 //dart, flutter에서 많이 사용되는 패턴
@@ -250,24 +251,23 @@ class Player {
 
 void main() {
   // 원래 문장
-
-  // var kazu = Player(name: 'kazu', xp: 1200, team: 'red');
-  // kazu.name = 'azureun';
-  // kazu.xp = 1200000;
-  // kazu.team = 'blue';
+  var kazu1 = Player(name: 'kazu1', xp: 1200, team: 'red1');
+  kazu1.name = 'azureun1';
+  kazu1.xp = 1200000;
+  kazu1.team = 'blue1';
 
   // Cascade Notation1 - syntax sugar된 문장 (kazu 변수 세미콜론 주의!)
-  // var kazu = Player(name: 'kazu', xp: 1200, team: 'red')
-  //   ..name = 'azureun'
-  //   ..xp = 1200000
-  //   ..team = 'blue';  // .. 2개의 점 모두 kazu를 가리킴
+  var kazu2 = Player(name: 'kazu2', xp: 1200, team: 'red2')
+    ..name = 'azureun2'
+    ..xp = 1200000
+    ..team = 'blue2';  // .. 2개의 점 모두 kazu2를 가리킴
 
   // Cascade Notation2 
-  var kazu = Player(name: 'kazu', xp: 1200, team: 'red');
-  var blueberry = kazu
-    ..name = 'azureun'
+  var kazu3 = Player(name: 'kazu3', xp: 1200, team: 'red3');
+  var blueberry = kazu3
+    ..name = 'azureun3'
     ..xp = 1200000
-    ..team = 'blue'
+    ..team = 'blue3'
     ..sayHello();
 }
 */
@@ -320,7 +320,7 @@ void main() {
 //4.7 Abstract Classes
 
 //추상 클래스는 다른 클래스들이 직접 구현해야하는 메소드들을 모아 놓은 청사진 클래스
-//공통된 필드(변수)와 메소드 통일
+//공통된 필드(변수)와 메소드
 
 /*
 abstract class Human {
@@ -423,7 +423,7 @@ void main() {
 //4.9 Mixins
 
 //Mixin : **생성자가 없는 클래스**. / 생성자가 없으면 Mixin 클래스가 됨
-//클래스 프로퍼티를 추가할 때 사용.
+//클래스 속성(property) 추가할 때 사용.
 //여러 클래스에 재사용이 가능함.
 
 //<extends와 Mixin차이>
