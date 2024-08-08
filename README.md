@@ -381,6 +381,126 @@ void main(){
     player.sayHello();
 ```
 
-### 4.1 Constructors 생성자
+### 4.1 Constructors (생성자)
 - 클래스와 새 인스턴스를 생성 및 초기화
+- 생성자 이름은 클래스의 이름과 같다.
+
+> 생성자 예시1
+```dart echo
+Player(this.name, this.xp);    //입력 받는 순서대로 지정
+```
+> 생성자 예시2 (자바 생성자 초기와 비슷)
+```dart echo
+Player(String name, int xp){
+    this.name = name;
+    this.xp = xp;
+}
+```
+
+### 4.2 Named Counstructor Parameters
+
+> 생성자 Parameter들 required 형태로 관리
+```dart echo
+class Player {
+  final String name;
+  int xp;
+  String team;
+  int age;
+
+  //1. 생성자의 Parameter들 중괄호로 감싸고
+  Player({
+    required this.name,
+    required this.xp,
+    required this.team,
+    required this.age,
+
+  void sayHello() {
+    print("Hi my name is $name");
+  }
+}
+
+void main(){
+  //너무 많은 positional arguments가 이웃하면 혼란스러워짐.
+  //아래와 같이 어떤 arguments인지 알 수 있도록 만들기
+
+  //2. 각각 name Parameter 적어주기
+  var player2 = Player(
+  name: "azureun",
+  xp: 2500,
+  team: 'blue',
+  age: 12,
+);
+  player2.sayHello();
+}
+```
+
+### 4.3 Named Constructors
+- Named Constructor는 여러 생성자를 가질 수 있고, 각 생성자에 의미 있는 이름 부여.
+    -> 동일한 클래스에 대해 여러 방식으로 객체 초기화
+- 형태 : ClassName().constructorName()
+
+```dart echo
+Player.createBluePlayer({required String name, required int age})
+  : this.age = age,
+    this.name = name,
+    this.team = 'blue',
+    this.xp = 0;
+```
+
+> named vs positional
+- name : 기본적으로 required 속성 없음. 명시적 형태
+- positional : 기본적으로 모든 positional parameter는 required. parameter 없으면 작동하지 않음.
+
+```dart echo
+void main() {
+  //named 형식
+  var player = Player.createBluePlayer(
+    name: "kazu",
+    age: 12,
+  );
+  //positional 형식
+  var redPlayer = Player.createRedPlayer("kazu", 12);
+}
+```
+### 4.4 fromJson named Constructor
+- JSON 데이터로부터 객체 생성 시 사용되는 특별한 생성자
+- API 응답 등 JSON 데이터를 객체로 변환할 때 사용.
+
+> Player 생성자와 다른 이름인 Player.fromJson
+```dart echo
+Player.fromJason(Map<String, dynamic> playerJson)
+  //class 내부 name을 playerJson Map에서 key가 name인 값 가져와서 대입
+  : name = playerJson['name'],
+    xp = playerJson['xp'],
+    team = playerJson['team'];
+```
+
+### 4.5 Cascade Notation(..)
+- Object의 메소드 호출하거나 속성 설정할 때 사용.
+
+> 인스턴스 초기화 3가지 형태 예시
+```dart echo
+void main() {
+  // 원래 문장
+  var kazu1 = Player(name: 'kazu1', xp: 1200, team: 'red1');
+  kazu1.name = 'azureun1';
+  kazu1.xp = 1200000;
+  kazu1.team = 'blue1';
+
+  // Cascade Notation1 - syntax sugar된 문장 (kazu 변수 세미콜론 주의!)
+  var kazu2 = Player(name: 'kazu2', xp: 1200, team: 'red2')
+    ..name = 'azureun2'
+    ..xp = 1200000
+    ..team = 'blue2';  // .. 2개의 점 모두 kazu2를 가리킴
+
+  // Cascade Notation2 
+  var kazu3 = Player(name: 'kazu3', xp: 1200, team: 'red3');
+  var blueberry = kazu3
+    ..name = 'azureun3'
+    ..xp = 1200000
+    ..team = 'blue3'
+    ..sayHello();
+}
+```
+
 
