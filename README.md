@@ -413,10 +413,6 @@ class Player {
     required this.xp,
     required this.team,
     required this.age,
-
-  void sayHello() {
-    print("Hi my name is $name");
-  }
 }
 
 void main(){
@@ -430,7 +426,6 @@ void main(){
   team: 'blue',
   age: 12,
 );
-  player2.sayHello();
 }
 ```
 
@@ -502,5 +497,111 @@ void main() {
     ..sayHello();
 }
 ```
+### 4.6 Enums
+- enum은 코드 작성 시, 실수하지 않도록 도와주는 타입
+- enum type에 생성된 값들 중에서만 값이 할당되므로 선택의 폭을 좁힘.
 
+> enum 예시
+```dart echo
+enum Team { red, blue } //새로운 타입 정의
+enum XPLevel { beginner, medium, pro }
 
+//class Player..
+
+void main() {
+  var kazu = Player(
+    name: 'kazu',
+    xp: XPLevel.medium,    //선택지 3가지만 고를 수 있음.
+    team: Team.red,        //선택지 2가지만 고를 수 있음.
+  )..sayHello(); //출력 결과 : Hi my name is kazu medium red
+}
+```
+### 4.7 Abstract Classes
+- 추상 클래스는 다른 클래스들이 구현해야하는 메소드들을 모아 놓은 설계도 클래스
+- 메소드 이름은 같지만 다르게 작동.
+
+> 추상 클래스 예시
+```dart echo
+abstract class Human {
+  void walk();
+}
+
+//enum Team ..
+//enum XPLevel ..
+Class Player extends Human {    //추상 클래스 Human을 상속 받음
+    //Player 생성자
+    void walk(){
+        print("I'm walk');
+    }
+}
+class Coach extends Human {    //추상 클래스 Human을 상속 받음
+    void walk(){                //Player에도 walk() 메소드가 있지만 다르게 작동함.
+        print("The coach is walking.");
+    }
+}
+```
+### 4.8 Inheritance (상속)
+- extends
+  - 자식 클래스는 부모 클래스의 매소드와 속성을 상속 받음.
+  - 단일 클래스만 상속 받을 수 있음.
+  - supper 키워드로 부모 클래스의 생성자를 호출할 수 있다.
+
+> 상속 예시
+```dart echo
+// enum ..
+class Human{
+    String name;
+    Human({required this.name});
+}
+class Player extends Human {
+    final Team team;
+    Player({
+        required this.team,
+        required String name,    //String name도 필수 요소를 받겠다고 적어야 함. Human에 name 넘겨 주기 위함.
+    }) : super(name : name);    //첫번째 name : Human의 name, 두번째 name : Player의 name
+    @override
+    void sayHello() {
+    super.sayHello(); //Human class의 sayHello먼저 출력
+    print('and I play for ${team}');
+    }
+}
+```
+### 4.9 Mixins
+- 생성자가 없는 클래스
+- 클래스 속성 추가 시 사용함.
+- 여러 클래스에 재사용 가능함.
+
+> Mixin 예시
+```dart echo
+mixin Strong {
+  final double strengthLevel = 1500.99;
+}
+mixin QuickRunner {
+  void runQuick() {
+    print("runnnnnnn!");
+  }
+}
+
+class Player with Strong, QuickRunner {
+  //with 사용. Strong, Quick 클래스에 있는 프로퍼티 & 메소드를 Player에 넣기
+  final Team team;
+
+  Player({
+    required this.team,
+    required String name,
+  });
+  void say() {
+    print('${team.name} team Fighting!');
+  }
+}
+class Horse with Strong, QuickRunner {} //다른 클래스도 Mixin 클래스 가져오기 가능.
+class Kid with QuickRunner {}
+
+void main() {
+  var player = Player(
+    team: Team.red,
+    name: 'kazu',
+  )..say();
+  player.runQuick();
+}
+```
