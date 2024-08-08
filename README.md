@@ -346,3 +346,41 @@ void main(){
 
 ---
 ## 4. Classes
+
+### 4.0 Dart Class
+
+> Class 구조
+```dart echo
+class Person {        //class 클래스 이름
+    String name,      //필드 (멤버)
+    int age;          //메소드 (함수)
+}
+```
+
+> Property(속성)
+- 객체의 특성 나타냄.
+- 데이터 은닉 & 캡슐화 제공
+- 변수 혹은 getter, setter를 통한 메소드 접근.
+
+> class 접근
+```dart echo
+class Player {
+    String name = 'kazu';
+    final String name2 = 'cocoa';
+    int xp = 1500;
+
+    void sayHello(){
+        print("Hi my name is $name);
+    }
+}
+
+void main(){
+    var player = Player();
+    player.name = 'azureun';
+    print(playe.name);
+    player.sayHello();
+```
+
+### 4.1 Constructors 생성자
+- 클래스와 새 인스턴스를 생성 및 초기화
+
